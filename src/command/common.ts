@@ -212,8 +212,8 @@ export class MinimalVisibilityCommand implements ICommand {
       throw new UnexpectedParseError("Vertical visibility should be defined");
     if (!container.visibility)
       container.visibility = {
-          value: parseInt(matches[1]),
-          unit: DistanceUnit.Meters,
+        value: parseInt(matches[1]),
+        unit: DistanceUnit.Meters,
       };
 
     container.visibility.min = {
