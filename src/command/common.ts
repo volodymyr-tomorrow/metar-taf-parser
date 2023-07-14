@@ -200,7 +200,7 @@ export class VerticalVisibilityCommand implements ICommand {
 }
 
 export class MinimalVisibilityCommand implements ICommand {
-  #regex = /^(\d{4}[NESW]{1,2})$/;
+  #regex = /^(\d{4}[NnEeSsWw]{1,2})$/;
 
   execute(
     container: IAbstractWeatherContainer,
