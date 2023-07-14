@@ -5,8 +5,8 @@ import {
   IWindShear,
 } from "model/model";
 import * as converter from "commons/converter";
-import { CloudQuantity, CloudType, SpeedUnit } from "model/enum";
-import { CommandExecutionError, UnexpectedParseError } from "commons/errors";
+import { CloudQuantity, CloudType, DistanceUnit, SpeedUnit } from "model/enum";
+import { UnexpectedParseError } from "commons/errors";
 import { as } from "helpers/helpers";
 
 interface ICommand {
@@ -211,7 +211,10 @@ export class MinimalVisibilityCommand implements ICommand {
     if (!matches)
       throw new UnexpectedParseError("Vertical visibility should be defined");
     if (!container.visibility)
-      throw new UnexpectedParseError("container.visibility not instantiated");
+      container.visibility = {
+          value: parseInt(matches[1]),
+          unit: DistanceUnit.Meters,
+      };
 
     container.visibility.min = {
       value: +matches[1].slice(0, 4),
